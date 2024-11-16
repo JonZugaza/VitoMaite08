@@ -1,17 +1,55 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
+
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>VitoMaite08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <link rel="icon" type="image/ico" href="img/favicon.ico">
     </head>
+
     <body>
-        <div>ffTODO write content</div>
-        
+        <header id="cabeceralogo">
+            <div>
+                <h1>VitoMaite08</h1>
+            </div>
+        </header>
+
+        <nav id="menuprincipal">
+            <div>
+                <ul id="listamenu">
+                    <li>
+                        <a href="index.html">Elegir idioma</a>
+                        <ul>
+                            <li><a href="familia.html">Euskera</a></li>
+                            <li><a href="vacaciones.html">Inglés</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="consejosSeguridad.html">Consejos de seguridad</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>         
+            <div class="container">
+                <form id="buscar">
+                    <label for="nombreBusqueda">¿A quién estás buscando?</label>
+                    <input type="text" id="nombreBusqueda" name="nombreBusqueda"> 
+                    <button type="button" id="botonBuscar">Buscar</button>
+                </form>
+            </div>   
+        </main>
+
+        <footer id="pielogo">
+            <div>
+                <section class="seccionpie">
+                    <div>VitoMaite08, Hodei Garmendia eta Jon Zugaza</div>
+                    <small>&copy; Derechos Reservados 2024</small>
+                </section>
+            </div>
+        </footer>
         <script src="js/busquedaAnonimo.js"></script>
     </body>
 </html>
+
+
