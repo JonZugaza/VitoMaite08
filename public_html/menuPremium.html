@@ -1,16 +1,97 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>VitoMaite08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <link rel="icon" type="image/ico" href="img/favicon.ico">
     </head>
+
     <body>
-        <div>TODO write content</div>
+        <header id="cabeceralogo">
+            <div>
+                <h1>VitoMaite08</h1>
+            </div>
+        </header>
+
+        <nav id="menuprincipal">
+            <div>
+                <ul id="listamenu">
+                    <li>
+                        <a href="index.html">Elegir idioma</a>
+                        <ul>
+                            <li><a href="familia.html">Euskera</a></li>
+                            <li><a href="vacaciones.html">Inglés</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="consejosSeguridad.html">Consejos de seguridad</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <section>
+                <button type="button" id="botonMP">Modificar perfil</button>
+            </section>
+            <section>
+                <nav id="gestionarAficiones">
+                    <div>
+                        <ul id="gestionaraficiones">
+                            <li>
+                                <a href="menuLogueado.html">Gestionar aficiones</a>
+                                <ul>
+                                    <li>
+                                        <button type="button" id="botonVA">Ver aficiones</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" id="botonAF">Añadir aficiones</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" id="botonEF">Eliminar aficiones</button>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </section>
+            <section>
+                <nav id="gestionarBusquedas">
+                    <div>
+                        <ul id="gestionarbusquedas">
+                            <li>
+                                <a href="menuLogueado.html">Buscar</a>
+                                <ul>
+                                    <li>
+                                        <button type="button" id="botonBN">Búsqueda normal</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" id="botonBA">Búsqueda por aficiones</button>
+                                    </li>
+                                    <li>
+                                        <button type="button" id="botonBG">Búsqueda por geolocalización</button>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </section>
+            <section>
+                <button type="button" id="botonLikes">Ver mis likes</button>
+            </section>
+            <section>
+                <button type="button" id="botonMatches">¿Con quién he hecho match?</button>
+            </section>
+        </main>
+        <footer id="pielogo">
+            <div>
+                <section class="seccionpie">
+                    <div>VitoMaite08, Hodei Garmendia eta Jon Zugaza</div>
+                    <small>&copy; Derechos Reservados 2024</small>
+                </section>
+            </div>
+        </footer>
         <script src="js/menuPremium.js"></script>
     </body>
 </html>
