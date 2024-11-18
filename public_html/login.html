@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VitoMaite08</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <link rel="icon" type="image/ico" href="img/favicon.ico">
+    </head>
+
+    <body>
+        <header id="cabeceralogo">
+            <div>
+                <h1>VitoMaite08</h1>
+            </div>
+        </header>
+
+        <nav id="menuprincipal">
+            <div>
+                <ul id="listamenu">
+                    <li>
+                        <a href="index.html">Elegir idioma</a>
+                        <ul>
+                            <li><a href="familia.html">Euskera</a></li>
+                            <li><a href="vacaciones.html">Inglés</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="consejosSeguridad.html">Consejos de seguridad</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <section>
+                <form name="formulario" id="formulario" method="get" action="procesar.php">
+                    <p><label>Correo: <input type="email" id="correo" name="correo" required></label></p>
+                    <p><label>Contraseña: <input type="password" id="contraseña" name="contraseña" autofocus></label></p>
+                    <button type="button" id="botonIS">Iniciar Sesión</button>
+                </form>
+            </section>
+        </main>
+        <footer id="pielogo">
+            <div>
+                <section class="seccionpie">
+                    <div>VitoMaite08, Hodei Garmendia eta Jon Zugaza</div>
+                    <small>&copy; Derechos Reservados 2024</small>
+                </section>
+            </div>
+        </footer>
+        <script src="js/login.js"></script>
+    </body>
+</html>
