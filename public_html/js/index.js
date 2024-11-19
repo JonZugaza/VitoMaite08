@@ -67,5 +67,16 @@ function inicializar() {
         usuariosStore.add({nombre: "Elena", email: "elena@gmail.com", contraseña: "1234", foto: "avatar16", edad: 32, genero: "M", premium: "0", ciudad: "Vitoria", altura: 164, colorPelo: "Pelirrojo"});
 
     };
+    document.getElementById("botonIS").addEventListener("click", function () {
+    iniciarSesion();
+    });
+
+
+function iniciarSesion()
+{
+    var email = document.getElementById("email").value;
+    var contraseña = document.getElementById("contraseña").value;
+    
+
 }
 
