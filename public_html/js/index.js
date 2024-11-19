@@ -36,6 +36,18 @@ function inicializar() {
         aficionesStore.add({nombre: "Animales"});
 
         aficionesStore.createIndex("nombre", "nombre", {unique: true});
+
+        var usuariosStore = db.createObjectStore("Usuarios", {keyPath: "id", autoIncrement: true});
+        usuariosStore.createIndex("nombre", "nombre", {unique: false});
+        usuariosStore.createIndex("email", "email", {unique: true});
+        usuariosStore.createIndex("password", "password", {unique: false});
+        usuariosStore.createIndex("genero", "genero", {unique: false});
+        usuariosStore.createIndex("edad", "edad", {unique: false});
+        usuariosStore.createIndex("foto", "foto", {unique: false});
+        usuariosStore.createIndex("esPremium", "esPremium", {unique: false});
+        usuariosStore.createIndex("ciudad", "ciudad", {unique: false});
+        usuariosStore.createIndex("altura", "altura", {unique: false});
+        usuariosStore.createIndex("colorPelo", "colorPelo", {unique: false});
     };
 }
 
