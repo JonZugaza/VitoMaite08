@@ -35,12 +35,9 @@
             <form id="busqueda">
                 <label for="queBusco">¿Qué estoy buscando?</label>
                 <select id="genero" name="genero">
-                    <option value="mujer-hombre">Soy mujer y busco hombres</option>
-                    <option value="mujer-mujer">Soy mujer y busco mujeres</option>
-                    <option value="mujer-ambos">Soy mujer y busco ambos géneros</option>
-                    <option value="hombre-mujer">Soy hombre y busco mujeres</option>
-                    <option value="hombre-hombre">Soy hombre y busco hombres</option>
-                    <option value="hombre-ambos">Soy hombre y busco ambos géneros</option>
+                    <option value="M">Busco mujeres</option>
+                    <option value="H">Busco hombres</option>
+                    <option value="ambos">Busco ambos géneros</option>
                 </select>
 
                 <label for="rangoEdad">¿Qué edad tendrán mis pretendientes?</label>
@@ -49,9 +46,9 @@
 
                 <label for="ciudad">¿De dónde van a ser?</label>
                 <select id="ciudad" name="ciudad">
-                    <option value="vitoria">Vitoria</option>
-                    <option value="bilbao">Bilbao</option>
-                    <option value="donosti">Donostia</option>
+                    <option value="Vitoria">Vitoria</option>
+                    <option value="Bilbao">Bilbao</option>
+                    <option value="Donosti">Donostia</option>
                 </select>
 
                 <button type="button" id="botonBuscar">Buscar</button>
@@ -68,6 +65,8 @@
             </div>
         </footer>
         <script src="js/busquedaAnonimo.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     </body>
 </html>
 
