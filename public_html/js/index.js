@@ -187,7 +187,8 @@ var email = document.getElementById("email").value;
                 sessionStorage.setItem('email', resultado.value.email);
                         sessionStorage.setItem('nombre', resultado.value.nombre);
                         sessionStorage.setItem('foto', resultado.value.foto);
-                        if (resultado.value.esPremium === "0")
+                        sessionStorage.setItem('genero', resultado.value.genero);
+                       if (resultado.value.esPremium === "0")
                         window.location.href = 'menuLogueado.html';
                         else
                         window.location.href = 'menuPremium.html';
