@@ -43,22 +43,22 @@ var solicitud = indexedDB.open("vitomaite08", 1);
                 usuariosStore.createIndex("altura", "altura", {unique: false});
                 usuariosStore.createIndex("colorPelo", "colorPelo", {unique: false});
                 
-                usuariosStore.add({nombre: "Eder", email: "eder@gmail.com", contraseña: "1234", foto: "avatar01", edad: 48, genero: "H", esPremium: "1", ciudad: "Bilbao", altura: 175, colorPelo: "Castaño"});
-                usuariosStore.add({nombre: "Maeb", email: "maeb@gmail.com", contraseña: "1234", foto: "avatar02", edad: 29, genero: "M", esPremium: "0", ciudad: "Donostia", altura: 165, colorPelo: "Rubio"});
-                usuariosStore.add({nombre: "Antoñanza", email: "antoñanza@gmail.com", contraseña: "1234", foto: "avatar03", edad: 35, genero: "H", esPremium: "1", ciudad: "Vitoria", altura: 180, colorPelo: "Negro"});
-                usuariosStore.add({nombre: "Marta", email: "marta@gmail.com", contraseña: "1234", foto: "avatar04", edad: 27, genero: "M", esPremium: "0", ciudad: "Donostia", altura: 170, colorPelo: "Pelirrojo"});
-                usuariosStore.add({nombre: "Ana", email: "ana@gmail.com", contraseña: "1234", foto: "avatar05", edad: 24, genero: "M", esPremium: "1", ciudad: "Bilbao", altura: 160, colorPelo: "Castaño"});
-                usuariosStore.add({nombre: "UnaiSkibidi", email: "unaiSkibidi@gmail.com", contraseña: "1234", foto: "avatar06", edad: 22, genero: "H", esPremium: "0", ciudad: "Vitoria", altura: 172, colorPelo: "Rubio"});
-                usuariosStore.add({nombre: "Marcoan", email: "marcoan@gmail.com", contraseña: "1234", foto: "avatar07", edad: 31, genero: "H", esPremium: "1", ciudad: "Vitoria", altura: 178, colorPelo: "Negro"});
-                usuariosStore.add({nombre: "Paula", email: "paula@gmail.com", contraseña: "1234", foto: "avatar08", edad: 26, genero: "M", esPremium: "0", ciudad: "Bilbao", altura: 168, colorPelo: "Rubio"});
-                usuariosStore.add({nombre: "Momo", email: "momo@gmail.com", contraseña: "1234", foto: "avatar09", edad: 38, genero: "H", esPremium: "0", ciudad: "Donostia", altura: 182, colorPelo: "Castaño"});
-                usuariosStore.add({nombre: "Sara", email: "sara@gmail.com", contraseña: "1234", foto: "avatar10", edad: 34, genero: "M", esPremium: "1", ciudad: "Vitoria", altura: 165, colorPelo: "Negro"});
-                usuariosStore.add({nombre: "Mario", email: "mario@gmail.com", contraseña: "1234", foto: "avatar11", edad: 37, genero: "H", esPremium: "1", ciudad: "Bilbao", altura: 180, colorPelo: "Pelirrojo"});
-                usuariosStore.add({nombre: "Lucía", email: "lucia@gmail.com", contraseña: "1234", foto: "avatar12", edad: 33, genero: "M", esPremium: "0", ciudad: "Donostia", altura: 170, colorPelo: "Rubio"});
-                usuariosStore.add({nombre: "Duke Dennis", email: "dukeDennis@gmail.com", contraseña: "1234", foto: "avatar13", edad: 29, genero: "H", esPremium: "1", ciudad: "Vitoria", altura: 176, colorPelo: "Negro"});
-                usuariosStore.add({nombre: "Tomás", email: "tomas@gmail.com", contraseña: "1234", foto: "avatar14", edad: 40, genero: "H", esPremium: "1", ciudad: "Bilbao", altura: 162, colorPelo: "Castaño"});
-                usuariosStore.add({nombre: "Emisario", email: "emisario@gmail.com", contraseña: "1234", foto: "avatar15", edad: 28, genero: "H", esPremium: "0", ciudad: "Donostia", altura: 181, colorPelo: "Negro"});
-                usuariosStore.add({nombre: "Faraón", email: "faraon@gmail.com", contraseña: "1234", foto: "avatar16", edad: 32, genero: "H", esPremium: "0", ciudad: "Vitoria", altura: 164, colorPelo: "Pelirrojo"});
+                usuariosStore.add({nombre: "Eder", email: "eder@gmail.com", contraseña: "1234", foto: avatar01, edad: 48, genero: "H", esPremium: "1", ciudad: "Bilbao", altura: 175, colorPelo: "Castaño"});
+                usuariosStore.add({nombre: "Maeb", email: "maeb@gmail.com", contraseña: "1234", foto: avatar02, edad: 29, genero: "M", esPremium: "0", ciudad: "Donostia", altura: 165, colorPelo: "Rubio"});
+                usuariosStore.add({nombre: "Antoñanza", email: "antoñanza@gmail.com", contraseña: "1234", foto: avatar03, edad: 35, genero: "H", esPremium: "1", ciudad: "Vitoria", altura: 180, colorPelo: "Negro"});
+                usuariosStore.add({nombre: "Marta", email: "marta@gmail.com", contraseña: "1234", foto: avatar04, edad: 27, genero: "M", esPremium: "0", ciudad: "Donostia", altura: 170, colorPelo: "Pelirrojo"});
+                usuariosStore.add({nombre: "Ana", email: "ana@gmail.com", contraseña: "1234", foto: avatar05, edad: 24, genero: "M", esPremium: "1", ciudad: "Bilbao", altura: 160, colorPelo: "Castaño"});
+                usuariosStore.add({nombre: "UnaiSkibidi", email: "unaiSkibidi@gmail.com", contraseña: "1234", foto: avatar06, edad: 22, genero: "H", esPremium: "0", ciudad: "Vitoria", altura: 172, colorPelo: "Rubio"});
+                usuariosStore.add({nombre: "Marcoan", email: "marcoan@gmail.com", contraseña: "1234", foto: avatar07, edad: 31, genero: "H", esPremium: "1", ciudad: "Vitoria", altura: 178, colorPelo: "Negro"});
+                usuariosStore.add({nombre: "Paula", email: "paula@gmail.com", contraseña: "1234", foto: avatar08, edad: 26, genero: "M", esPremium: "0", ciudad: "Bilbao", altura: 168, colorPelo: "Rubio"});
+                usuariosStore.add({nombre: "Momo", email: "momo@gmail.com", contraseña: "1234", foto: avatar09, edad: 38, genero: "H", esPremium: "0", ciudad: "Donostia", altura: 182, colorPelo: "Castaño"});
+                usuariosStore.add({nombre: "Sara", email: "sara@gmail.com", contraseña: "1234", foto: avatar10, edad: 34, genero: "M", esPremium: "1", ciudad: "Vitoria", altura: 165, colorPelo: "Negro"});
+                usuariosStore.add({nombre: "Mario", email: "mario@gmail.com", contraseña: "1234", foto: avatar11, edad: 37, genero: "H", esPremium: "1", ciudad: "Bilbao", altura: 180, colorPelo: "Pelirrojo"});
+                usuariosStore.add({nombre: "Lucía", email: "lucia@gmail.com", contraseña: "1234", foto: avatar12, edad: 33, genero: "M", esPremium: "0", ciudad: "Donostia", altura: 170, colorPelo: "Rubio"});
+                usuariosStore.add({nombre: "Duke Dennis", email: "dukeDennis@gmail.com", contraseña: "1234", foto: avatar13, edad: 29, genero: "H", esPremium: "1", ciudad: "Vitoria", altura: 176, colorPelo: "Negro"});
+                usuariosStore.add({nombre: "Tomás", email: "tomas@gmail.com", contraseña: "1234", foto: avatar14, edad: 40, genero: "H", esPremium: "1", ciudad: "Bilbao", altura: 162, colorPelo: "Castaño"});
+                usuariosStore.add({nombre: "Emisario", email: "emisario@gmail.com", contraseña: "1234", foto: avatar15, edad: 28, genero: "H", esPremium: "0", ciudad: "Donostia", altura: 181, colorPelo: "Negro"});
+                usuariosStore.add({nombre: "Faraón", email: "faraon@gmail.com", contraseña: "1234", foto: avatar16, edad: 32, genero: "H", esPremium: "0", ciudad: "Vitoria", altura: 164, colorPelo: "Pelirrojo"});
                 
                 var aficionesUsuarioStore = db.createObjectStore("AficionesUsuarios", { keyPath: "id", autoIncrement: true });
                 aficionesUsuarioStore.add({ email: "eder@gmail.com", aficion: 1 }); // Fútbol

@@ -117,22 +117,14 @@ function mostrarUsuarios(usuario) {
     ciudadCelda.textContent = usuario.ciudad;
 
     var fotoCelda = document.createElement("td");
-    var fotoCelda = document.createElement("td");
     var imgElemento = document.createElement("img");
 
-    if (usuario.foto.startsWith("data:image")) {
-        imgElemento.src = usuario.foto;
-    } else {
-        imgElemento.src = usuario.foto;
-    }
-
+    imgElemento.src = usuario.foto;
     imgElemento.alt = "Foto de " + usuario.nombre;
-    imgElemento.style.width = "50px";
-    imgElemento.style.height = "50px";
+    imgElemento.style.width = "100px";
+    imgElemento.style.height = "100px";
 
     fotoCelda.appendChild(imgElemento);
-
-    filaUsuario.appendChild(fotoCelda);
 
     filaUsuario.appendChild(nombreCelda);
     filaUsuario.appendChild(edadCelda);
@@ -141,4 +133,6 @@ function mostrarUsuarios(usuario) {
 
     tablaUsuarios.appendChild(filaUsuario);
 }
+
+
 
