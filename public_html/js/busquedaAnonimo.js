@@ -26,7 +26,7 @@ function buscar() {
         var transaccion = db.transaction(["Usuarios"], "readonly");
         var usuariosStore = transaccion.objectStore("Usuarios");
 
-        var cursor = usuariosStore.openCursor();
+        var cursor = usuariosStore.index("edad").openCursor();
 
         var hayUsuariosEnTabla = false;
         var hayUsuariosQueCumplen = false;
