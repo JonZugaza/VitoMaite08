@@ -47,16 +47,14 @@ function cargarAficiones() {
                 const divCheckbox = document.createElement("div");
                 const checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
-                checkbox.id = `aficion_${aficion.id}`;
-                checkbox.value = aficion.id;
+                checkbox.value = aficion.id; // El valor coincide con el identificador en AficionesUsuarios
+                checkbox.dataset.nombre = aficion.nombre; // Opcional, guardar nombre para depuración
 
                 const label = document.createElement("label");
-                label.htmlFor = checkbox.id;
                 label.textContent = aficion.nombre;
 
                 divCheckbox.appendChild(checkbox);
                 divCheckbox.appendChild(label);
-
                 checkboxAficiones.appendChild(divCheckbox);
 
                 resultado.continue();
@@ -65,6 +63,7 @@ function cargarAficiones() {
     };
 }
 
-function buscar(){
+
+function buscar() {
     console.log("klk");
 }
