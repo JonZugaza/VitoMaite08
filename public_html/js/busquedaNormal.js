@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var foto = sessionStorage.getItem('foto');
     var mensajeBienvenida = document.getElementById("mensajeBienvenida");
     var genero = sessionStorage.getItem('genero');
-    console.log(genero);
 
     if (genero === 'H') {
         mensajeBienvenida.textContent = "Bienvenido, " + nombre;
