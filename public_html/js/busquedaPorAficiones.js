@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     var nombre = sessionStorage.getItem('nombre');
     var foto = sessionStorage.getItem('foto');
     var mensajeBienvenida = document.getElementById("mensajeBienvenida");
     var genero = sessionStorage.getItem('genero');
-    
+
     if (genero === 'H') {
         mensajeBienvenida.textContent = "Bienvenido, " + nombre;
     } else {
@@ -12,6 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var fotoUsuarioElement = document.getElementById("foto");
     fotoUsuarioElement.src = foto;
+
+    cargarAficiones();
+
+    const btnBuscar = document.getElementById("botonBuscar");
+    btnBuscar.addEventListener("click", buscar);
+
 });
 
 document.getElementById("botonCS").addEventListener('click', function () {
@@ -21,8 +26,45 @@ document.getElementById("botonCS").addEventListener('click', function () {
     sessionStorage.removeItem('genero');
 
     window.location.href = 'index.html';
+});
+
+function cargarAficiones() {
+    const checkboxAficiones = document.getElementById("checkboxAficiones");
+    const solicitud = indexedDB.open("vitomaite08", 1);
+
+    solicitud.onsuccess = function (evento) {
+        const db = evento.target.result;
+        const transaccion = db.transaction(["Aficiones"], "readonly");
+        const aficionesStore = transaccion.objectStore("Aficiones");
+
+        const cursor = aficionesStore.openCursor();
+        cursor.onsuccess = function (eventoCursor) {
+            const resultado = eventoCursor.target.result;
+
+            if (resultado) {
+                const aficion = resultado.value;
+
+                const divCheckbox = document.createElement("div");
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.id = `aficion_${aficion.id}`;
+                checkbox.value = aficion.id;
+
+                const label = document.createElement("label");
+                label.htmlFor = checkbox.id;
+                label.textContent = aficion.nombre;
+
+                divCheckbox.appendChild(checkbox);
+                divCheckbox.appendChild(label);
+
+                checkboxAficiones.appendChild(divCheckbox);
+
+                resultado.continue();
+            }
+        };
+    };
 }
-);
 
-
-
+function buscar(){
+    console.log("klk");
+}
