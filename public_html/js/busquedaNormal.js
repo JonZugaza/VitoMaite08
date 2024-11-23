@@ -43,7 +43,7 @@ function buscar() {
         var transaccion = db.transaction(["Usuarios"], "readonly");
         var usuariosStore = transaccion.objectStore("Usuarios");
 
-        var cursor = usuariosStore.openCursor();
+        var cursor = usuariosStore.index("edad").openCursor();
 
         var hayUsuariosEnTabla = false;
         var hayUsuariosQueCumplen = false;
@@ -69,8 +69,12 @@ function buscar() {
 
                 if (cumpleCriterios) {
                     console.log("se van a devolver personas");
-                    mostrarUsuarios(usuario);
-                    hayUsuariosQueCumplen = true;
+                    var emailUsuario = sessionStorage.getItem('email');
+                    if ( emailUsuario !== usuario.email )
+                    {
+                        mostrarUsuarios(usuario);
+                        hayUsuariosQueCumplen = true;
+                    }
                 }
                 resultado.continue();
             } else {
@@ -152,7 +156,7 @@ function mostrarUsuarios(usuario) {
     var botonDetalles = document.createElement("button");
     botonDetalles.textContent = "Ver más detalles";
     botonDetalles.onclick = function () {
-        ponerLogin();
+        verDetalles();
     };
 
     detallesCelda.appendChild(botonDetalles);
@@ -167,9 +171,8 @@ function mostrarUsuarios(usuario) {
     tablaUsuarios.appendChild(filaUsuario);
 }
 
-function ponerLogin() {
+function verDetalles() {
     console.log("funciona");
-    window.location.href = 'login.html';
 
 }
 
