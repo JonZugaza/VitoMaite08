@@ -35,12 +35,10 @@ function cargarLikes() {
             var resultado = eventoCursor.target.result;
 
             if (resultado) {
-                console.log("Se encontró un like: ", resultado);
                 hayLikes = true;
                 var like = resultado.value;
                 var emailUsuario = sessionStorage.getItem("email");
                 if (emailUsuario === like.usuario1) {
-                    console.log("tengo likes");
                     var pretendiente = like.usuario2;
                     mostrarLikes(pretendiente);
                 }
@@ -143,7 +141,6 @@ function conseguirInformacion(pretendiente, callback) {
             if (resultado) {
                 var usuario = resultado.value;
                 if (pretendiente === usuario.email) {
-                    console.log("Encontre al pretendiente", usuario);
                     callback(usuario.id); 
                 }
                 resultado.continue();
@@ -169,7 +166,6 @@ function conseguirNombre(pretendiente, callback) {
             if (resultado) {
                 var usuario = resultado.value;
                 if (pretendiente === usuario.email) {
-                    console.log("Encontre al pretendiente", usuario);
                     callback(usuario.nombre); 
                 }
                 resultado.continue();
@@ -194,7 +190,6 @@ function conseguirEdad(pretendiente, callback) {
             if (resultado) {
                 var usuario = resultado.value;
                 if (pretendiente === usuario.email) {
-                    console.log("Encontre al pretendiente", usuario);
                     callback(usuario.edad); 
                 }
                 resultado.continue();
@@ -219,7 +214,6 @@ function conseguirCiudad(pretendiente, callback) {
             if (resultado) {
                 var usuario = resultado.value;
                 if (pretendiente === usuario.email) {
-                    console.log("Encontre al pretendiente", usuario);
                     callback(usuario.ciudad); 
                 }
                 resultado.continue();
@@ -244,7 +238,6 @@ function conseguirFoto(pretendiente, callback) {
             if (resultado) {
                 var usuario = resultado.value;
                 if (pretendiente === usuario.email) {
-                    console.log("Encontre al pretendiente", usuario);
                     callback(usuario.foto); 
                 }
                 resultado.continue();
