@@ -128,6 +128,8 @@ var solicitud = indexedDB.open("vitomaite08", 1);
                 aficionesUsuarioStore.add({ email: "faraon@gmail.com", aficion: 9 }); // Ir al gym
 
                 aficionesUsuarioStore.createIndex("email", "email", {unique: false});
+                
+                
                 var likesStore = db.createObjectStore("Likes", {keyPath: "id", autoIncrement: true});
                 likesStore.createIndex("usuario1", "usuario1", {unique: false});
                 likesStore.createIndex("usuario2", "usuario2", {unique: false});
