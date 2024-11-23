@@ -41,7 +41,6 @@ function cargarLikes(){
         var emailUsuario = sessionStorage.getItem("email");
         if(emailUsuario === like.usuario1){
             console.log("tengo likes");
-            console.log(like.usuario2);
             var pretendiente = like.usuario2;
             mostrarLikes(pretendiente);
         }
