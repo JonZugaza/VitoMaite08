@@ -8,7 +8,7 @@ document.getElementById("botonBuscar").addEventListener("click", function () {
 function buscar() {
 
     var resultado = document.getElementById("resultado");
-    resultado.innerHTML = ""; // Limpiar resultados previos
+    resultado.innerHTML = ""; 
 
 
     var solicitud = indexedDB.open("vitomaite08", 1);
@@ -94,10 +94,15 @@ function mostrarUsuarios(usuario) {
         var fotoCabecera = document.createElement("th");
         fotoCabecera.textContent = "Foto";
 
+        var detallesCabecera = document.createElement("th");
+        detallesCabecera.textContent = "Detalles";
+
         filaCabecera.appendChild(nombreCabecera);
         filaCabecera.appendChild(edadCabecera);
         filaCabecera.appendChild(ciudadCabecera);
         filaCabecera.appendChild(fotoCabecera);
+        filaCabecera.appendChild(detallesCabecera);
+
 
         tablaUsuarios.appendChild(filaCabecera);
 
@@ -126,12 +131,29 @@ function mostrarUsuarios(usuario) {
 
     fotoCelda.appendChild(imgElemento);
 
+    var detallesCelda = document.createElement("td");
+    var botonDetalles = document.createElement("button");
+    botonDetalles.textContent = "Ver más detalles";
+    botonDetalles.onclick = function () {
+        ponerLogin();
+    };
+
+    detallesCelda.appendChild(botonDetalles);
+
     filaUsuario.appendChild(nombreCelda);
     filaUsuario.appendChild(edadCelda);
     filaUsuario.appendChild(ciudadCelda);
     filaUsuario.appendChild(fotoCelda);
+    filaUsuario.appendChild(detallesCelda);
+
 
     tablaUsuarios.appendChild(filaUsuario);
+}
+
+function ponerLogin() {
+    console.log("funciona");
+    window.location.href = 'login.html';
+
 }
 
 
