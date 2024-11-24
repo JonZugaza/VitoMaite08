@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     cargarAficiones();
 
-    botonEliminar.addEventListener('click', function() {
+    botonEliminar.addEventListener('click', function () {
         eliminarAficionesSeleccionadas();
     });
 });
@@ -52,7 +52,7 @@ function cargarAficiones() {
 
                         const checkbox = document.createElement("input");
                         checkbox.type = "checkbox";
-                        checkbox.value = aficion.id;  
+                        checkbox.value = aficion.id;
 
                         li.appendChild(checkbox);
                         li.appendChild(document.createTextNode(aficion.nombre));
@@ -73,8 +73,63 @@ function cargarAficiones() {
 }
 
 function eliminarAficionesSeleccionadas() {
-    console.log("klk");
+    const lista = document.getElementById("listaAficiones");
+    const checkboxes = lista.querySelectorAll("input[type='checkbox']:checked");
+
+    if (checkboxes.length === 0) {
+        console.log("No se seleccionaron aficiones para eliminar.");
+        return;
+    }
+
+    const aficionesAEliminar = Array.from(checkboxes).map(cb => parseInt(cb.value)); 
+    const emailUsuario = sessionStorage.getItem("email");
+
+    const solicitud = indexedDB.open("vitomaite08", 1);
+
+    solicitud.onsuccess = function (evento) {
+        const db = evento.target.result;
+        const transaccion = db.transaction(["AficionesUsuarios"], "readwrite");
+        const aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
+
+        const cursor = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
+
+        cursor.onsuccess = function (eventoCursor) {
+            const resultado = eventoCursor.target.result;
+
+            if (resultado) {
+                const idAficion = resultado.value.aficion;
+
+                if (aficionesAEliminar.includes(idAficion)) {
+                    aficionesUsuariosStore.delete(resultado.primaryKey); 
+                }
+
+                resultado.continue();
+            } else {
+                console.log("Eliminación en IndexedDB completada.");
+                actualizarSessionStorage(aficionesAEliminar);
+            }
+        };
+    };
+
+    solicitud.onerror = function (evento) {
+        console.error("No se pudo abrir la base de datos:", evento.target.error);
+    };
 }
+
+function actualizarSessionStorage(aficionesAEliminar) {
+    const aficionesPerfil = JSON.parse(sessionStorage.getItem("aficiones")) || [];
+    const nuevasAficiones = aficionesPerfil.filter(
+            aficion => !aficionesAEliminar.includes(aficion.id)
+    );
+
+    sessionStorage.setItem("aficiones", JSON.stringify(nuevasAficiones));
+    console.log("SessionStorage actualizado:", nuevasAficiones);
+
+    const lista = document.getElementById("listaAficiones");
+    lista.innerHTML = ""; 
+    cargarAficiones(); 
+}
+
 
 
 
