@@ -99,6 +99,51 @@ function cargarAficionesExcluyendoUsuario(db, aficionesDelUsuario) {
 
 
 function añadirAficiones() {
-    console.log("añadir");
-}
+      const checkboxes = document.querySelectorAll("#checkboxAficiones input[type='checkbox']:checked");
+    const aficionesSeleccionadas = Array.from(checkboxes).map((checkbox) => ({
+        id: parseInt(checkbox.value), 
+        nombre: checkbox.dataset.nombre,
+    }));
 
+    if (aficionesSeleccionadas.length === 0) {
+        alert("No has seleccionado ninguna afición.");
+        return;
+    }
+
+    const emailUsuario = sessionStorage.getItem("email");
+    const solicitud = indexedDB.open("vitomaite08", 1);
+
+    solicitud.onsuccess = function (evento) {
+        const db = evento.target.result;
+        const transaccion = db.transaction(["AficionesUsuarios"], "readwrite");
+        const aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
+
+        aficionesSeleccionadas.forEach((aficion) => {
+            aficionesUsuariosStore.add({
+                email: emailUsuario,
+                aficion: aficion.id,
+            });
+        });
+
+        transaccion.oncomplete = function () {
+            console.log("Aficiones añadidas correctamente a la base de datos.");
+
+            const aficionesPerfil = JSON.parse(sessionStorage.getItem("aficiones")) || [];
+            aficionesSeleccionadas.forEach((aficion) => {
+                if (!aficionesPerfil.some((a) => a.id === aficion.id)) {
+                    aficionesPerfil.push(aficion);
+                }
+            });
+            sessionStorage.setItem("aficiones", JSON.stringify(aficionesPerfil));
+
+        };
+
+        transaccion.onerror = function (evento) {
+            console.error("Error al agregar las aficiones a la base de datos:", evento.target.error);
+        };
+    };
+
+    solicitud.onerror = function (evento) {
+        console.error("No se pudo abrir la base de datos:", evento.target.error);
+    };
+}
