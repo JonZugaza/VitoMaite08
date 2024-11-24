@@ -34,21 +34,50 @@ function cargarAficiones() {
 
     solicitud.onsuccess = function (evento) {
         const db = evento.target.result;
-        const transaccion = db.transaction(["Aficiones"], "readonly");
-        const aficionesStore = transaccion.objectStore("Aficiones");
 
-        const cursor = aficionesStore.openCursor();
-        cursor.onsuccess = function (eventoCursor) {
-            const resultado = eventoCursor.target.result;
+        const transaccionUsuario = db.transaction(["AficionesUsuarios"], "readonly");
+        const aficionesUsuariosStore = transaccionUsuario.objectStore("AficionesUsuarios");
 
-            if (resultado) {
-                const aficion = resultado.value;
+        const emailUsuario = sessionStorage.getItem("email");
 
+        const aficionesDelUsuario = new Set(); 
+
+        const cursorUsuario = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
+        cursorUsuario.onsuccess = function (eventoCursorUsuario) {
+            const resultadoUsuario = eventoCursorUsuario.target.result;
+
+            if (resultadoUsuario) {
+                aficionesDelUsuario.add(resultadoUsuario.value.aficion); 
+                resultadoUsuario.continue();
+            } else {
+                cargarAficionesExcluyendoUsuario(db, aficionesDelUsuario);
+            }
+        };
+    };
+
+    solicitud.onerror = function (evento) {
+        console.error("Error al abrir la base de datos", evento.target.error);
+    };
+}
+
+function cargarAficionesExcluyendoUsuario(db, aficionesDelUsuario) {
+    const checkboxAficiones = document.getElementById("checkboxAficiones");
+    const transaccion = db.transaction(["Aficiones"], "readonly");
+    const aficionesStore = transaccion.objectStore("Aficiones");
+
+    const cursor = aficionesStore.openCursor();
+    cursor.onsuccess = function (eventoCursor) {
+        const resultado = eventoCursor.target.result;
+
+        if (resultado) {
+            const aficion = resultado.value;
+
+            if (!aficionesDelUsuario.has(aficion.id)) {
                 const divCheckbox = document.createElement("div");
                 const checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
-                checkbox.value = aficion.id; // El valor coincide con el identificador en AficionesUsuarios
-                checkbox.dataset.nombre = aficion.nombre; // Opcional, guardar nombre para depuración
+                checkbox.value = aficion.id; 
+                checkbox.dataset.nombre = aficion.nombre; 
 
                 const label = document.createElement("label");
                 label.textContent = aficion.nombre;
@@ -56,12 +85,17 @@ function cargarAficiones() {
                 divCheckbox.appendChild(checkbox);
                 divCheckbox.appendChild(label);
                 checkboxAficiones.appendChild(divCheckbox);
-
-                resultado.continue();
             }
-        };
+
+            resultado.continue();
+        }
+    };
+
+    cursor.onerror = function (evento) {
+        console.error("Error al recorrer las aficiones", evento.target.error);
     };
 }
+
 
 
 function añadirAficiones() {
