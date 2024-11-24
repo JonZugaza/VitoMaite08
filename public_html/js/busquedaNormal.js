@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var fotoUsuarioElement = document.getElementById("foto");
     fotoUsuarioElement.src = foto;
-    
+
 });
 
 document.getElementById("botonBuscar").addEventListener("click", function () {
@@ -24,7 +24,7 @@ document.getElementById("botonBuscar").addEventListener("click", function () {
 function buscar() {
 
     var resultado = document.getElementById("resultado");
-    resultado.innerHTML = ""; 
+    resultado.innerHTML = "";
 
 
     var solicitud = indexedDB.open("vitomaite08", 1);
@@ -69,7 +69,7 @@ function buscar() {
                 if (cumpleCriterios) {
                     console.log("se van a devolver personas");
                     var emailUsuario = sessionStorage.getItem('email');
-                    if ( emailUsuario !== usuario.email )
+                    if (emailUsuario !== usuario.email)
                     {
                         mostrarUsuarios(usuario);
                         hayUsuariosQueCumplen = true;
@@ -103,7 +103,7 @@ function mostrarUsuarios(usuario) {
         var filaCabecera = document.createElement("tr");
 
         var nombreCabecera = document.createElement("th");
-        nombreCabecera.textContent = "Nick";
+        nombreCabecera.textContent = "Nombre";
 
         var edadCabecera = document.createElement("th");
         edadCabecera.textContent = "Edad";
@@ -155,7 +155,7 @@ function mostrarUsuarios(usuario) {
     var botonDetalles = document.createElement("button");
     botonDetalles.textContent = "Ver más detalles";
     botonDetalles.onclick = function () {
-        verDetalles();
+        verDetalles(usuario);
     };
 
     detallesCelda.appendChild(botonDetalles);
@@ -170,9 +170,26 @@ function mostrarUsuarios(usuario) {
     tablaUsuarios.appendChild(filaUsuario);
 }
 
-function verDetalles() {
-    console.log("funciona");
+function verDetalles(usuario) {
+    var filaUsuario = document.getElementById(usuario.id);
+
+    if (!filaUsuario) {
+        console.error("No se encontró la fila para el usuario:", usuario);
+        return;
+    }
+
+    if (filaUsuario.querySelector(".detalles-columna")) {
+        console.log("Los detalles ya están visibles para este usuario.");
+        return;
+    }
+
+    var alturaCelda = document.createElement("td");
+    alturaCelda.textContent = "La altura es:" + usuario.altura;
+
+    var colorPeloCelda = document.createElement("td");
+    colorPeloCelda.textContent = ",Tiene el pelo:" + usuario.colorPelo;
+
+    filaUsuario.appendChild(alturaCelda);
+    filaUsuario.appendChild(colorPeloCelda);
 
 }
-
-
