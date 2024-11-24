@@ -83,7 +83,7 @@ function mostrarUsuarios(usuario) {
         var filaCabecera = document.createElement("tr");
 
         var nombreCabecera = document.createElement("th");
-        nombreCabecera.textContent = "Nick";
+        nombreCabecera.textContent = "Nombre";
 
         var edadCabecera = document.createElement("th");
         edadCabecera.textContent = "Edad";

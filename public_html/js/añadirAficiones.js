@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         mensajeBienvenida.textContent = "Bienvenida, " + nombre;
     }
+
     var fotoUsuarioElement = document.getElementById("foto");
     fotoUsuarioElement.src = foto;
 
@@ -16,31 +17,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const botonAñadir = document.getElementById("botonAñadir");
     botonAñadir.addEventListener("click", añadirAficiones);
-
 });
 
 document.getElementById("botonCS").addEventListener('click', function () {
-    sessionStorage.removeItem('email');
-    sessionStorage.removeItem('nombre');
-    sessionStorage.removeItem('foto');
-    sessionStorage.removeItem('genero');
-
+    sessionStorage.clear();
     window.location.href = 'index.html';
 });
 
 function cargarAficiones() {
-    const checkboxAficiones = document.getElementById("checkboxAficiones");
     const solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
         const db = evento.target.result;
-
         const transaccionUsuario = db.transaction(["AficionesUsuarios"], "readonly");
         const aficionesUsuariosStore = transaccionUsuario.objectStore("AficionesUsuarios");
 
         const emailUsuario = sessionStorage.getItem("email");
-
-        const aficionesDelUsuario = new Set(); 
+        const aficionesDelUsuario = new Set();
 
         const cursorUsuario = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
         cursorUsuario.onsuccess = function (eventoCursorUsuario) {
@@ -74,10 +67,13 @@ function cargarAficionesExcluyendoUsuario(db, aficionesDelUsuario) {
 
             if (!aficionesDelUsuario.has(aficion.id)) {
                 const divCheckbox = document.createElement("div");
+                divCheckbox.classList.add("aficion-item");
+                divCheckbox.dataset.aficionId = aficion.id;
+
                 const checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
-                checkbox.value = aficion.id; 
-                checkbox.dataset.nombre = aficion.nombre; 
+                checkbox.value = aficion.id;
+                checkbox.dataset.nombre = aficion.nombre;
 
                 const label = document.createElement("label");
                 label.textContent = aficion.nombre;
@@ -96,12 +92,10 @@ function cargarAficionesExcluyendoUsuario(db, aficionesDelUsuario) {
     };
 }
 
-
-
 function añadirAficiones() {
-      const checkboxes = document.querySelectorAll("#checkboxAficiones input[type='checkbox']:checked");
+    const checkboxes = document.querySelectorAll("#checkboxAficiones input[type='checkbox']:checked");
     const aficionesSeleccionadas = Array.from(checkboxes).map((checkbox) => ({
-        id: parseInt(checkbox.value), 
+        id: parseInt(checkbox.value),
         nombre: checkbox.dataset.nombre,
     }));
 
@@ -118,32 +112,31 @@ function añadirAficiones() {
         const transaccion = db.transaction(["AficionesUsuarios"], "readwrite");
         const aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
 
+        const aficionesPerfil = JSON.parse(sessionStorage.getItem("aficiones")) || [];
+        const aficionesPerfilIds = aficionesPerfil.map((aficion) => aficion.id);
+
         aficionesSeleccionadas.forEach((aficion) => {
-            aficionesUsuariosStore.add({
-                email: emailUsuario,
-                aficion: aficion.id,
-            });
+            if (!aficionesPerfilIds.includes(aficion.id)) {
+                aficionesUsuariosStore.add({
+                    email: emailUsuario,
+                    aficion: aficion.id,
+                });
+
+                aficionesPerfil.push(aficion);
+
+                const checkboxItem = document.querySelector(`.aficion-item[data-aficion-id='${aficion.id}']`);
+                if (checkboxItem) {
+                    checkboxItem.remove();
+                }
+            }
         });
 
-        transaccion.oncomplete = function () {
-            console.log("Aficiones añadidas correctamente a la base de datos.");
-
-            const aficionesPerfil = JSON.parse(sessionStorage.getItem("aficiones")) || [];
-            aficionesSeleccionadas.forEach((aficion) => {
-                if (!aficionesPerfil.some((a) => a.id === aficion.id)) {
-                    aficionesPerfil.push(aficion);
-                }
-            });
-            sessionStorage.setItem("aficiones", JSON.stringify(aficionesPerfil));
-
-        };
-
-        transaccion.onerror = function (evento) {
-            console.error("Error al agregar las aficiones a la base de datos:", evento.target.error);
-        };
+        sessionStorage.setItem("aficiones", JSON.stringify(aficionesPerfil));
+        console.log("Aficiones añadidas correctamente.");
     };
 
     solicitud.onerror = function (evento) {
         console.error("No se pudo abrir la base de datos:", evento.target.error);
     };
 }
+
