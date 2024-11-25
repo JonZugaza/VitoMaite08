@@ -4,8 +4,8 @@
         <title>VitoMaite08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/estilos.css">
-        <link rel="icon" type="image/ico" href="img/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+        <link rel="icon" type="image/ico" href="../img/favicon.ico">
     </head>
 
     <body>
@@ -19,23 +19,22 @@
             <div>
                 <ul id="listamenu">
                     <li>
-                        <a href="index.html">Elegir idioma</a>
-                        <ul>
-                            <li><a href="familia.html">Euskera</a></li>
-                            <li><a href="vacaciones.html">Inglés</a></li>
-                        </ul>
+                        <a href="../menuPremium.html">Gazteleraz jarri</a>              
                     </li>
-                    <li><a href="consejosSeguridad.html">Consejos de seguridad</a></li>
+                    <li>
+                        <a href="index.html">Ingelesez jarri</a>              
+                    </li>
+                    <li><a href="consejosSeguridad.html">Segurtasun aholkuak</a></li>
                 </ul>
             </div>
         </nav>
         <main>
             <div id="cerrarSesionContainer"> 
-                <button id="botonCS">Cerrar Sesión</button>
+                <button id="botonSI">Sesioa itxi</button>
                 <a id="mensajeBienvenida"></a>
                 <img id="foto" alt="Foto del usuario" src =''>
             </div>
-            <button type="button" id="botonMP">Modificar perfil</button>
+            <button type="button" id="botonMP">Profila aldatu</button>
             <section>
                 <nav id="gestionarAficiones">
                     <div>
@@ -43,13 +42,13 @@
                             <li>
                                 <ul>
                                     <li>
-                                        <button type="button" id="botonVA">Ver aficiones</button>
+                                        <button type="button" id="botonVA">Zaletasunak ikusi</button>
                                     </li>
                                     <li>
-                                        <button type="button" id="botonAA">Añadir aficiones</button>
+                                        <button type="button" id="botonAA">Zaletasunak gehitu</button>
                                     </li>
                                     <li>
-                                        <button type="button" id="botonEA">Eliminar aficiones</button>
+                                        <button type="button" id="botonEA">Zaletasunak kendu</button>
                                     </li>
                                 </ul>
                             </li>
@@ -64,14 +63,13 @@
                             <li>
                                 <ul>
                                     <li>
-                                        <button type="button" id="botonBN">Búsqueda normal</button>
+                                        <button type="button" id="botonBN">Bilaketa normala</button>
                                     </li>
                                     <li>
-                                        <button type="button" id="botonBA">Búsqueda por aficiones</button>
+                                        <button type="button" id="botonBA">Zaletasunen araberako bilaketa</button>
                                     </li>
                                     <li>
-                                        <!-- Aquí luego poner algo de pasarse a premium -->
-                                        <button type="button" id="botonBG">Búsqueda por geolocalización</button>
+                                        <button type="button" id="botonBG">Geolokalizazio bidezko bilaketa</button>
                                     </li>
                                 </ul>
                             </li>
@@ -80,11 +78,10 @@
                 </nav>
             </section>
             <section>
-                <button type="button" id="botonLikes">Ver mis likes</button>
+                <button type="button" id="botonLikes">Nire like-ak ikusi</button>
             </section>
             <section>
-                <!-- Esto creo que también era premium, mirar más tarde -->
-                <button type="button" id="botonMatches">¿Con quién he hecho match?</button>
+                <button type="button" id="botonMatches">Norekin egin dut match?</button>
             </section>
         </main>
         <footer id="pielogo">
@@ -95,6 +92,6 @@
                 </section>
             </div>
         </footer>
-        <script src="js/menuLogueado.js"></script>
+        <script src="../js/menuLogueado.js"></script>
     </body>
 </html>

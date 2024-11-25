@@ -158,7 +158,7 @@ var db = evento.target.result;
 document.getElementById("botonIS").addEventListener("click", function () {
 iniciarSesion();
 });
-       
+
 function iniciarSesion()
 {
     var email = document.getElementById("email").value;

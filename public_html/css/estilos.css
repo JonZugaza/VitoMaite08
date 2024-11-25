@@ -266,3 +266,69 @@ span {
     display: block;
 }
 
+/* Formulario */
+form#busqueda {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos uno debajo del otro */
+    width: 100%;
+    max-width: 500px; /* Ancho máximo para el formulario */
+    margin: 0 auto; /* Centra el formulario en la página */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Espaciado entre los elementos */
+form#busqueda label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem; /* Espacio debajo de la etiqueta */
+    font-weight: bold;
+    color: #333;
+}
+
+form#busqueda input,
+form#busqueda select,
+form#busqueda button {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 1rem; /* Espacio entre los elementos del formulario */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Botón Buscar */
+form#busqueda button {
+    background-color: #ff5733;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form#busqueda button:hover {
+    background-color: #e14a2a;
+}
+
+/* Responsividad */
+@media screen and (max-width: 768px) {
+    form#busqueda {
+        padding: 15px;
+    }
+    form#busqueda label,
+    form#busqueda input,
+    form#busqueda select,
+    form#busqueda button {
+        font-size: 1rem;
+    }
+}
+
+p {
+    margin-bottom: 20px; /* Espaciado entre párrafos */
+    line-height: 1.6; /* Mejor legibilidad */
+    font-size: 1rem;
+}

@@ -4,8 +4,8 @@
         <title>VitoMaite08</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="css/estilos.css">
-        <link rel="icon" type="image/ico" href="img/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+        <link rel="icon" type="image/ico" href="../img/favicon.ico">
 
 
 
@@ -22,23 +22,22 @@
             <div>
                 <ul id="listamenu">
                     <li>
-                        <a href="index.html">Elegir idioma</a>
-                        <ul>
-                            <li><a href="familia.html">Euskera</a></li>
-                            <li><a href="vacaciones.html">Inglés</a></li>
-                        </ul>
+                        <a href="../busquedaPorGeolocalizacion.html">Gazteleraz jarri</a>              
                     </li>
-                    <li><a href="consejosSeguridad.html">Consejos de seguridad</a></li>
+                    <li>
+                        <a href="index.html">Ingelesez jarri</a>              
+                    </li>
+                    <li><a href="consejosSeguridad.html">Segurtasun aholkuak</a></li>
                 </ul>
             </div>
         </nav>
         <main>
             <div id="cerrarSesionContainer"> 
-                <button id="botonCS">Cerrar Sesión</button>
+                <button id="botonSI">Sesioa itxi</button>
                 <a id="mensajeBienvenida"></a>
                 <img id="foto" alt="Foto del usuario" src =''>
             </div>
-            <h2>Búsqueda por geolocalización, escoge el rango de cercanía:</h2>
+            <h2>Geolokalizazio bidezko bilaketa, aukeratu hurbiltasun-tartea:</h2>
             <select id="cercania" name="cercania">
                 <option value="0.5">0,5 kms</option>
                 <option value="1">1 km</option>
@@ -48,7 +47,7 @@
                 <option value="10">10 kms</option>
                 <option value="50">50 kms</option>
             </select>
-            <button type="button" id="botonBuscar">Buscar</button>
+            <button type="button" id="botonBuscar">Bilatu</button>
             <div class="map-container">
                 <div id="map"></div>
             </div>
@@ -62,7 +61,7 @@
                 </section>
             </div>
         </footer>
-        <script src="js/busquedaPorGeolocalizacion.js"></script>
+        <script src="../js/busquedaPorGeolocalizacion.js"></script>
         <script async defer 
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTIe5r4grFo-N6i3Zlf0rIgmworbCoayk&callback=initMap">
         </script>
