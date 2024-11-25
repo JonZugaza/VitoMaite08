@@ -32,6 +32,8 @@ ciudades.forEach(ciudad => {
 
 
 function cambiarCiudad() {
+    
+    var guardarCiudad = document.getElementById("guardarCiudad");
     var ciudadSeleccionada = document.getElementById("ciudadSeleccionada").value;
     
     if(!ciudadSeleccionada)
@@ -63,8 +65,8 @@ function cambiarCiudad() {
              var usuario1 = resultado.value;
              usuario1.ciudad = ciudadSeleccionada;
              sessionStorage.setItem("ciudad", ciudadSeleccionada);
-         }}
-        }
+         }};
+        };
    
     
         guardarCiudad.addEventListener("click", cambiarCiudad);
@@ -73,9 +75,6 @@ function cambiarCiudad() {
     
     
     
-    
-    
-
-
-
+  
+}
 
