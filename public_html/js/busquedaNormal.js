@@ -117,11 +117,24 @@ function mostrarUsuarios(usuario) {
         var detallesCabecera = document.createElement("th");
         detallesCabecera.textContent = "Detalles";
 
+        var alturaCabecera = document.createElement("th");
+        alturaCabecera.textContent = "Altura";
+
+        var colorPeloCabecera = document.createElement("th");
+        colorPeloCabecera.textContent = "Color del pelo";
+
+        var ubicacionCabecera = document.createElement("th");
+        ubicacionCabecera.textContent = "Ubicación";
+        
         filaCabecera.appendChild(nombreCabecera);
         filaCabecera.appendChild(edadCabecera);
         filaCabecera.appendChild(ciudadCabecera);
         filaCabecera.appendChild(fotoCabecera);
         filaCabecera.appendChild(detallesCabecera);
+        filaCabecera.appendChild(alturaCabecera);
+        filaCabecera.appendChild(colorPeloCabecera);
+        filaCabecera.appendChild(ubicacionCabecera);
+
 
 
         tablaUsuarios.appendChild(filaCabecera);
@@ -182,14 +195,22 @@ function verDetalles(usuario) {
         console.log("Los detalles ya están visibles para este usuario.");
         return;
     }
-
     var alturaCelda = document.createElement("td");
-    alturaCelda.textContent = "La altura es:" + usuario.altura;
+    alturaCelda.textContent = usuario.altura;
 
     var colorPeloCelda = document.createElement("td");
-    colorPeloCelda.textContent = ",Tiene el pelo:" + usuario.colorPelo;
+    colorPeloCelda.textContent = usuario.colorPelo;
 
+    var mapaCelda = document.createElement("td");
+    mapaCelda.textContent = "mapa";
+    
     filaUsuario.appendChild(alturaCelda);
     filaUsuario.appendChild(colorPeloCelda);
+    filaUsuario.appendChild(mapaCelda);
 
 }
+
+document.getElementById("botonCS").addEventListener('click', function () {
+    sessionStorage.clear();
+    window.location.href = 'index.html';
+});

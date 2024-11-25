@@ -97,12 +97,23 @@ function mostrarUsuarios(usuario) {
         var detallesCabecera = document.createElement("th");
         detallesCabecera.textContent = "Detalles";
 
+        var alturaCabecera = document.createElement("th");
+        alturaCabecera.textContent = "Altura";
+
+        var colorPeloCabecera = document.createElement("th");
+        colorPeloCabecera.textContent = "Color del pelo";
+
+        var ubicacionCabecera = document.createElement("th");
+        ubicacionCabecera.textContent = "Ubicación";
+        
         filaCabecera.appendChild(nombreCabecera);
         filaCabecera.appendChild(edadCabecera);
         filaCabecera.appendChild(ciudadCabecera);
         filaCabecera.appendChild(fotoCabecera);
         filaCabecera.appendChild(detallesCabecera);
-
+        filaCabecera.appendChild(alturaCabecera);
+        filaCabecera.appendChild(colorPeloCabecera);
+        filaCabecera.appendChild(ubicacionCabecera);
 
         tablaUsuarios.appendChild(filaCabecera);
 

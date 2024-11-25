@@ -130,6 +130,9 @@ function actualizarSessionStorage(aficionesAEliminar) {
     cargarAficiones(); 
 }
 
-
+document.getElementById("botonCS").addEventListener('click', function () {
+    sessionStorage.clear();
+    window.location.href = 'index.html';
+});
 
 

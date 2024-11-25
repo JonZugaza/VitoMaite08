@@ -60,11 +60,6 @@ document.getElementById("botonMatches").addEventListener('click', function () {
 );
 
 document.getElementById("botonCS").addEventListener('click', function () {
-    sessionStorage.removeItem('email');
-    sessionStorage.removeItem('nombre');
-    sessionStorage.removeItem('foto');
-    sessionStorage.removeItem('genero');
-
+    sessionStorage.clear();
     window.location.href = 'index.html';
-}
-);
+});

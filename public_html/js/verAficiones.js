@@ -60,3 +60,8 @@ function cargarAficiones() {
         console.error("no se abre la bd", evento.target.error);
     };
 }
+
+document.getElementById("botonCS").addEventListener('click', function () {
+    sessionStorage.clear();
+    window.location.href = 'index.html';
+});
