@@ -19,24 +19,27 @@
             <div>
                 <ul id="listamenu">
                     <li>
-                        <a href="../index.html">Gazteleraz jarri</a>              
+                        <a href="../htmlEU/eliminarAficiones.html">Change to Euskera</a>              
                     </li>
                     <li>
-                        <a href="index.html">Ingelesez jarri</a>              
+                        <a href="../eliminarAficiones.html">Change to Spanish</a>              
                     </li>
-                    <li><a href="consejosSeguridad.html">Segurtasun aholkuak</a></li>
+                    <li><a href="consejosSeguridad.html">Security advice</a></li>
                 </ul>
             </div>
         </nav>
         <main>
-            <section>
-                <form name="formulario" id="formulario" method="get" action="procesar.php">
-                    <p><label>Zure korreoa idatzi: <input type="email" id="email" name="email" required></label></p>
-                    <p><label>Zure pasahitza idatzi: <input type="password" id="contraseña" name="contraseña" autofocus></label></p>
-                    <button type="button" id="botonIS">Sesioa hasi</button>
-                    <a href="busquedaAnonimo.html">Pertsonak bilatu</a>
-                </form>
-            </section>
+            <div id="cerrarSesionContainer"> 
+                <button id="botonCS">Logout</button>
+                <a id="mensajeBienvenida"></a>
+                <img id="foto" alt="Foto del usuario" src =''>
+            </div>
+            <div id="eliminarAficiones">
+                <h2>Which hobbies do you want to delete?</h2>
+                <ul id="listaAficiones">
+                </ul>
+                <button id="botonEliminar">Delete hobbies</button>
+            </div>
         </main>
         <footer id="pielogo">
             <div>
@@ -46,8 +49,7 @@
                 </section>
             </div>
         </footer>
-        <script src="../js/index.js"></script>
+        <script src="../js/eliminarAficiones.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>
-

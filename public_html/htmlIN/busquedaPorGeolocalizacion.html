@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
         <link rel="icon" type="image/ico" href="../img/favicon.ico">
+
+
+
     </head>
 
     <body>
@@ -19,27 +22,36 @@
             <div>
                 <ul id="listamenu">
                     <li>
-                        <a href="../eliminarAficiones.html">Gazteleraz jarri</a>              
+                        <a href="../htmlEU/busquedaPorGeolocalizacion.html">Change to Euskera</a>              
                     </li>
                     <li>
-                        <a href="../htmlIN/eliminarAficiones.html">Ingelesez jarri</a>              
+                        <a href="../busquedaPorGeolocalizacion.html">Change to Spanish</a>              
                     </li>
-                    <li><a href="consejosSeguridad.html">Segurtasun aholkuak</a></li>
+                    <li><a href="consejosSeguridad.html">Security advice</a></li>
                 </ul>
             </div>
         </nav>
         <main>
             <div id="cerrarSesionContainer"> 
-                <button id="botonCS">Sesioa itxi</button>
+                <button id="botonCS">Logout</button>
                 <a id="mensajeBienvenida"></a>
                 <img id="foto" alt="Foto del usuario" src =''>
             </div>
-            <div id="eliminarAficiones">
-                <h2>Zein zaletasun ezabatu nahi dituzu?</h2>
-                <ul id="listaAficiones">
-                </ul>
-                <button id="botonEliminar">Zaletasunak ezabatu</button>
+            <h2>Geolocation search, choose the proximity distance:</h2>
+            <select id="cercania" name="cercania">
+                <option value="0.5">0,5 kms</option>
+                <option value="1">1 km</option>
+                <option value="1.5">1,5 kms</option>
+                <option value="2">2 kms</option>
+                <option value="5">5 kms</option>
+                <option value="10">10 kms</option>
+                <option value="50">50 kms</option>
+            </select>
+            <button type="button" id="botonBuscar">Search</button>
+            <div class="map-container">
+                <div id="map"></div>
             </div>
+
         </main>
         <footer id="pielogo">
             <div>
@@ -49,7 +61,9 @@
                 </section>
             </div>
         </footer>
-        <script src="../js/eliminarAficiones.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../js/busquedaPorGeolocalizacion.js"></script>
+        <script async defer 
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTIe5r4grFo-N6i3Zlf0rIgmworbCoayk&callback=initMap">
+        </script>
     </body>
 </html>
