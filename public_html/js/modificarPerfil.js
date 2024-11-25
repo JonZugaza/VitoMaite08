@@ -68,7 +68,12 @@ function cambiarCiudad() {
              var usuario1 = resultado.value;
              usuario1.ciudad = ciudadSeleccionada;
              sessionStorage.setItem("ciudad", ciudadSeleccionada);
-         }};
+         } else {
+             console.log("actualización en IndexedDB completada.");
+                actualizarSessionStorage(ciudadSeleccionada);
+         } 
+         
+        };
         };
 }
 
