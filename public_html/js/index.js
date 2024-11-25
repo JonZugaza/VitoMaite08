@@ -191,6 +191,9 @@ var email = document.getElementById("email").value;
                         sessionStorage.setItem('nombre', resultado.value.nombre);
                         sessionStorage.setItem('foto', resultado.value.foto);
                         sessionStorage.setItem('genero', resultado.value.genero);
+                        sessionStorage.setItem('lat', resultado.value.lat);
+                        sessionStorage.setItem('long', resultado.value.long);
+
                        if (resultado.value.esPremium === "0")
                         window.location.href = 'menuLogueado.html';
                         else

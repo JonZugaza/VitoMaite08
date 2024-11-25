@@ -15,17 +15,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-var latUsuario = sessionStorage.getItem('lat');
-var longUsuario = sessionStorage.getItem('long');
-const latRef = 43.2630; 
-const lonRef = -2.9350; 
+var latUsuario = parseFloat(sessionStorage.getItem('lat'));
+var longUsuario = parseFloat(sessionStorage.getItem('long'));
+var nombre = sessionStorage.getItem("nombre");
 const radio = 100; 
+console.log(latUsuario);
+console.log(longUsuario);
 
 // Inicializar el mapa
 function initMap() {
     // Crear el mapa centrado en la latitud y longitud de referencia
     const map = new google.maps.Map(document.getElementById("map"), {
-        center: {lat: 43.24260658476168, lng: -2.923762555397524},
+        center: {lat: latUsuario, lng: longUsuario},
                 zoom: 8 
 
     });
@@ -39,7 +40,7 @@ function initMap() {
         fillColor: "#FF0000",
         fillOpacity: 0.2,
         map,
-        center: {lat: latRef, lng: lonRef},
+        center: {lat: latUsuario, lng: longUsuario},
         radius: radio * 1000 // Convertir kilómetros a metros
     });
 
@@ -47,7 +48,7 @@ function initMap() {
     // Añadir marcadores para los puntos dentro del radio
 
         const marker = new google.maps.Marker({
-            position: {lat: 43.24260658476168, lng: -2.923762555397524},
+            position: {lat: latUsuario, lng: longUsuario},
             map
                              
 
@@ -58,7 +59,7 @@ function initMap() {
 
         // Evento para mostrar una alerta al hacer clic en el marcador
         marker.addListener("click", () => {
-            alert(`Has hecho clic en: la casa de eder`);
+            alert(`Has hecho clic en la casa de ` + nombre);
         });
    
 }
