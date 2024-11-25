@@ -48,7 +48,7 @@ function initMap() {
 
         const marker = new google.maps.Marker({
             position: {lat: 43.24260658476168, lng: -2.923762555397524},
-            map,
+            map
                              
 
         });
@@ -62,10 +62,6 @@ function initMap() {
         });
    
 }
-
-
-
-
 
 document.getElementById("botonCS").addEventListener('click', function () {
     sessionStorage.clear();
