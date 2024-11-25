@@ -253,10 +253,33 @@ function verDetalles(usuario) {
     colorPeloCelda.textContent = usuario.colorPelo;
 
     var mapaCelda = document.createElement("td");
-    mapaCelda.textContent = "mapa";
+    mapaCelda.className = "detalles-columna";
+    var mapa = document.createElement("div");
+    mapa.id = `mapa-${usuario.id}`;
+    mapa.style.width = "250px";
+    mapa.style.height = "200px";
+    mapaCelda.appendChild(mapa);
 
     filaUsuario.appendChild(alturaCelda);
     filaUsuario.appendChild(colorPeloCelda);
     filaUsuario.appendChild(mapaCelda);
 
+    const lat = parseFloat(usuario.lat);
+    const lon = parseFloat(usuario.long);
+
+    const map = new google.maps.Map(mapa, {
+        center: {lat, lng: lon},
+        zoom: 12
+    });
+
+    new google.maps.Marker({
+        position: {lat, lng: lon},
+        map,
+        title: `Ubicación de ${usuario.nombre}`
+    });
 }
+
+document.getElementById("botonCS").addEventListener('click', function () {
+    sessionStorage.clear();
+    window.location.href = 'index.html';
+});

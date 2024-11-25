@@ -186,4 +186,56 @@ footer#pielogo small {
             height: 100vh; /* Altura de la pantalla */
         }
 
+form {
+	background-color: #FFFFFF;
+        margin: 0 35%;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px 40px;
+	width: 100%;
+	max-width: 400px;
+}
 
+input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 10px 0;
+	width: 100%;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+	margin-top: 15px;
+}
+
+button:hover {
+	background-color: #FF6A4C;
+	transform: scale(1.05);
+}
+
+button:focus {
+	outline: none;
+}
+
+span {
+	font-size: 12px;
+	margin-top: 15px;
+	color: #555;
+	text-align: center;
+}
