@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 var latUsuario = parseFloat(sessionStorage.getItem('lat'));
 var longUsuario = parseFloat(sessionStorage.getItem('long'));
 var nombre = sessionStorage.getItem("nombre");
-var map; 
+var map;
 var circle;
 console.log(latUsuario);
 console.log(longUsuario);
@@ -67,7 +67,7 @@ function cambiarCirculo() {
 
 function dibujarCirculo(radio) {
     if (circle) {
-        circle.setMap(null); 
+        circle.setMap(null);
     }
 
     circle = new google.maps.Circle({
@@ -76,9 +76,9 @@ function dibujarCirculo(radio) {
         strokeWeight: 2,
         fillColor: "#FF0000",
         fillOpacity: 0.2,
-        map, 
+        map,
         center: {lat: latUsuario, lng: longUsuario},
-        radius: radio * 1000 
+        radius: radio * 1000
     });
 }
 
@@ -105,7 +105,7 @@ function ponerPersonas() {
             var resultado = eventoCursor.target.result;
 
             if (resultado) {
-                hayUsuariosEnTabla = true; 
+                hayUsuariosEnTabla = true;
                 var usuario = resultado.value;
                 var usuarioLat = parseFloat(usuario.lat);
                 var usuarioLong = parseFloat(usuario.long);

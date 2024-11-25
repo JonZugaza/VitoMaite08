@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const lista = document.getElementById("listaAficiones");
     var nombre = sessionStorage.getItem('nombre');
     var foto = sessionStorage.getItem('foto');
     var mensajeBienvenida = document.getElementById("mensajeBienvenida");
@@ -18,32 +17,32 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cargarAficiones() {
-    const lista = document.getElementById("listaAficiones");
+    var lista = document.getElementById("listaAficiones");
 
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["AficionesUsuarios", "Aficiones"], "readonly");
-        const aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
-        const aficionesStore = transaccion.objectStore("Aficiones");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["AficionesUsuarios", "Aficiones"], "readonly");
+        var aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
+        var aficionesStore = transaccion.objectStore("Aficiones");
 
-        const emailUsuario = sessionStorage.getItem('email');
+        var emailUsuario = sessionStorage.getItem('email');
 
-        const cursor = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
+        var cursor = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
 
         cursor.onsuccess = function (eventoCursor) {
-            const resultado = eventoCursor.target.result;
+            var resultado = eventoCursor.target.result;
 
             if (resultado) {
-                const idAficion = resultado.value.aficion;
-                const solicitudAficion = aficionesStore.get(idAficion);
+                var idAficion = resultado.value.aficion;
+                var solicitudAficion = aficionesStore.get(idAficion);
 
                 solicitudAficion.onsuccess = function (eventoAficion) {
-                    const aficion = eventoAficion.target.result;
+                    var aficion = eventoAficion.target.result;
 
                     if (aficion) {
-                        const li = document.createElement("li");
+                        var li = document.createElement("li");
                         li.textContent = aficion.nombre;
                         lista.appendChild(li);
                     }

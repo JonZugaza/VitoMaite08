@@ -25,28 +25,28 @@ document.getElementById("botonCS").addEventListener('click', function () {
 });
 
 function cargarAficiones() {
-    const checkboxAficiones = document.getElementById("checkboxAficiones");
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var checkboxAficiones = document.getElementById("checkboxAficiones");
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["Aficiones"], "readonly");
-        const aficionesStore = transaccion.objectStore("Aficiones");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["Aficiones"], "readonly");
+        var aficionesStore = transaccion.objectStore("Aficiones");
 
-        const cursor = aficionesStore.openCursor();
+        var cursor = aficionesStore.openCursor();
         cursor.onsuccess = function (eventoCursor) {
-            const resultado = eventoCursor.target.result;
+            var resultado = eventoCursor.target.result;
 
             if (resultado) {
-                const aficion = resultado.value;
+                var aficion = resultado.value;
 
-                const divCheckbox = document.createElement("div");
-                const checkbox = document.createElement("input");
+                var divCheckbox = document.createElement("div");
+                var checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
                 checkbox.value = aficion.id;
                 checkbox.dataset.nombre = aficion.nombre;
 
-                const label = document.createElement("label");
+                var label = document.createElement("label");
                 label.textContent = aficion.nombre;
 
                 divCheckbox.appendChild(checkbox);
@@ -66,30 +66,30 @@ function cargarAficiones() {
 }
 
 function buscar() {
-    const checkboxes = document.querySelectorAll("#checkboxAficiones input[type='checkbox']:checked");
-    const aficionesSeleccionadas = Array.from(checkboxes).map((checkbox) => parseInt(checkbox.value));
-    const resultadosContainer = document.getElementById("resultados");
+    var checkboxes = document.querySelectorAll("#checkboxAficiones input[type='checkbox']:checked");
+    var aficionesSeleccionadas = Array.from(checkboxes).map((checkbox) => parseInt(checkbox.value));
+    var resultadosContainer = document.getElementById("resultados");
     resultadosContainer.innerHTML = "";
 
     if (aficionesSeleccionadas.length === 0) {
         Swal.fire("No has seleccionado ninguna afición");
     }
 
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["AficionesUsuarios", "Usuarios"], "readonly");
-        const aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["AficionesUsuarios", "Usuarios"], "readonly");
+        var aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
 
-        const usuariosCoincidentes = new Set();
+        var usuariosCoincidentes = new Set();
 
-        const cursor = aficionesUsuariosStore.openCursor();
+        var cursor = aficionesUsuariosStore.openCursor();
         cursor.onsuccess = function (eventoCursor) {
-            const resultado = eventoCursor.target.result;
+            var resultado = eventoCursor.target.result;
 
             if (resultado) {
-                const registro = resultado.value;
+                var registro = resultado.value;
 
                 if (aficionesSeleccionadas.includes(registro.aficion)) {
                     usuariosCoincidentes.add(registro.email);
@@ -100,7 +100,7 @@ function buscar() {
                 if (usuariosCoincidentes.size > 0) {
                     cargarUsuarios(db, usuariosCoincidentes);
                 } else {
-                    const sinResultados = document.createElement("p");
+                    var sinResultados = document.createElement("p");
                     sinResultados.textContent = "No se encontraron usuarios con las aficiones seleccionadas.";
                     resultadosContainer.appendChild(sinResultados);
                 }
@@ -118,14 +118,14 @@ function buscar() {
 }
 
 function cargarUsuarios(db, emailsUsuarios) {
-    const usuariosStore = db.transaction(["Usuarios"], "readonly").objectStore("Usuarios");
+    var usuariosStore = db.transaction(["Usuarios"], "readonly").objectStore("Usuarios");
 
     emailsUsuarios.forEach((email) => {
 
-        const solicitudUsuario = usuariosStore.index("email").get(email);
+        var solicitudUsuario = usuariosStore.index("email").get(email);
 
         solicitudUsuario.onsuccess = function (eventoUsuario) {
-            const usuario = eventoUsuario.target.result;
+            var usuario = eventoUsuario.target.result;
 
             if (usuario) {
                 var emailUsuario = sessionStorage.getItem('email');
@@ -264,10 +264,10 @@ function verDetalles(usuario) {
     filaUsuario.appendChild(colorPeloCelda);
     filaUsuario.appendChild(mapaCelda);
 
-    const lat = parseFloat(usuario.lat);
-    const lon = parseFloat(usuario.long);
+    var lat = parseFloat(usuario.lat);
+    var lon = parseFloat(usuario.long);
 
-    const map = new google.maps.Map(mapa, {
+    var map = new google.maps.Map(mapa, {
         center: {lat, lng: lon},
         zoom: 12
     });

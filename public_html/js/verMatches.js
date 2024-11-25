@@ -21,12 +21,12 @@ function cargarLikes() {
     var resultado = document.getElementById("resultado");
     resultado.innerHTML = "";
 
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["Likes"], "readonly");
-        const likesStore = transaccion.objectStore("Likes");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["Likes"], "readonly");
+        var likesStore = transaccion.objectStore("Likes");
 
         var cursor = likesStore.openCursor();
         var emailUsuario = sessionStorage.getItem("email"); 
@@ -39,7 +39,7 @@ function cargarLikes() {
                 var like = likeActual.value;
 
                 if (like.usuario1 === emailUsuario && like.like === "1") {
-                    const pretendiente = like.usuario2;
+                    var pretendiente = like.usuario2;
 
                     comprobarMatch(db, emailUsuario, pretendiente, function (esMatch) {
                         if (esMatch) {
@@ -59,10 +59,10 @@ function cargarLikes() {
 }
 
 function comprobarMatch(db, usuario1, usuario2, callback) {
-    const transaccion = db.transaction(["Likes"], "readonly");
-    const likesStore = transaccion.objectStore("Likes");
+    var transaccion = db.transaction(["Likes"], "readonly");
+    var likesStore = transaccion.objectStore("Likes");
 
-    const indiceCursor = likesStore.openCursor();
+    var indiceCursor = likesStore.openCursor();
 
     indiceCursor.onsuccess = function (eventoCursor) {
         var likeActual = eventoCursor.target.result;
@@ -155,12 +155,12 @@ function mostrarLikes(pretendiente) {
 
 
 function conseguirInformacion(pretendiente, callback) {
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["Usuarios"], "readonly");
-        const usuariosStore = transaccion.objectStore("Usuarios");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["Usuarios"], "readonly");
+        var usuariosStore = transaccion.objectStore("Usuarios");
 
         var cursor = usuariosStore.openCursor();
 
@@ -180,12 +180,12 @@ function conseguirInformacion(pretendiente, callback) {
 
 
 function conseguirNombre(pretendiente, callback) {
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["Usuarios"], "readonly");
-        const usuariosStore = transaccion.objectStore("Usuarios");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["Usuarios"], "readonly");
+        var usuariosStore = transaccion.objectStore("Usuarios");
 
         var cursor = usuariosStore.openCursor();
 
@@ -204,12 +204,12 @@ function conseguirNombre(pretendiente, callback) {
 }
 
 function conseguirEdad(pretendiente, callback) {
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["Usuarios"], "readonly");
-        const usuariosStore = transaccion.objectStore("Usuarios");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["Usuarios"], "readonly");
+        var usuariosStore = transaccion.objectStore("Usuarios");
 
         var cursor = usuariosStore.openCursor();
 
@@ -228,12 +228,12 @@ function conseguirEdad(pretendiente, callback) {
 }
 
 function conseguirCiudad(pretendiente, callback) {
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["Usuarios"], "readonly");
-        const usuariosStore = transaccion.objectStore("Usuarios");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["Usuarios"], "readonly");
+        var usuariosStore = transaccion.objectStore("Usuarios");
 
         var cursor = usuariosStore.openCursor();
 
@@ -252,12 +252,12 @@ function conseguirCiudad(pretendiente, callback) {
 }
 
 function conseguirFoto(pretendiente, callback) {
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["Usuarios"], "readonly");
-        const usuariosStore = transaccion.objectStore("Usuarios");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["Usuarios"], "readonly");
+        var usuariosStore = transaccion.objectStore("Usuarios");
 
         var cursor = usuariosStore.openCursor();
 

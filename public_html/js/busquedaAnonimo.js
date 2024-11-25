@@ -1,6 +1,5 @@
 document.getElementById("botonBuscar").addEventListener("click", function () {
     var resultado = document.getElementById("resultado");
-    //borrar la tabla
     resultado.value = '';
     buscar();
 });

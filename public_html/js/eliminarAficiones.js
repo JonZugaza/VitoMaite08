@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const lista = document.getElementById("listaAficiones");
-    const botonEliminar = document.getElementById("botonEliminar");
+    var lista = document.getElementById("listaAficiones");
+    var botonEliminar = document.getElementById("botonEliminar");
     var nombre = sessionStorage.getItem('nombre');
     var foto = sessionStorage.getItem('foto');
     var mensajeBienvenida = document.getElementById("mensajeBienvenida");
@@ -23,34 +23,34 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cargarAficiones() {
-    const lista = document.getElementById("listaAficiones");
+    var lista = document.getElementById("listaAficiones");
 
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["AficionesUsuarios", "Aficiones"], "readonly");
-        const aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
-        const aficionesStore = transaccion.objectStore("Aficiones");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["AficionesUsuarios", "Aficiones"], "readonly");
+        var aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
+        var aficionesStore = transaccion.objectStore("Aficiones");
 
-        const emailUsuario = sessionStorage.getItem('email');
+        var emailUsuario = sessionStorage.getItem('email');
 
-        const cursor = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
+        var cursor = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
 
         cursor.onsuccess = function (eventoCursor) {
-            const resultado = eventoCursor.target.result;
+            var resultado = eventoCursor.target.result;
 
             if (resultado) {
-                const idAficion = resultado.value.aficion;
-                const solicitudAficion = aficionesStore.get(idAficion);
+                var idAficion = resultado.value.aficion;
+                var solicitudAficion = aficionesStore.get(idAficion);
 
                 solicitudAficion.onsuccess = function (eventoAficion) {
-                    const aficion = eventoAficion.target.result;
+                    var aficion = eventoAficion.target.result;
 
                     if (aficion) {
-                        const li = document.createElement("li");
+                        var li = document.createElement("li");
 
-                        const checkbox = document.createElement("input");
+                        var checkbox = document.createElement("input");
                         checkbox.type = "checkbox";
                         checkbox.value = aficion.id;
 
@@ -73,31 +73,31 @@ function cargarAficiones() {
 }
 
 function eliminarAficionesSeleccionadas() {
-    const lista = document.getElementById("listaAficiones");
-    const checkboxes = lista.querySelectorAll("input[type='checkbox']:checked");
+    var lista = document.getElementById("listaAficiones");
+    var checkboxes = lista.querySelectorAll("input[type='checkbox']:checked");
 
     if (checkboxes.length === 0) {
         console.log("No se seleccionaron aficiones para eliminar.");
         return;
     }
 
-    const aficionesAEliminar = Array.from(checkboxes).map(cb => parseInt(cb.value)); 
-    const emailUsuario = sessionStorage.getItem("email");
+    var aficionesAEliminar = Array.from(checkboxes).map(cb => parseInt(cb.value)); 
+    var emailUsuario = sessionStorage.getItem("email");
 
-    const solicitud = indexedDB.open("vitomaite08", 1);
+    var solicitud = indexedDB.open("vitomaite08", 1);
 
     solicitud.onsuccess = function (evento) {
-        const db = evento.target.result;
-        const transaccion = db.transaction(["AficionesUsuarios"], "readwrite");
-        const aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
+        var db = evento.target.result;
+        var transaccion = db.transaction(["AficionesUsuarios"], "readwrite");
+        var aficionesUsuariosStore = transaccion.objectStore("AficionesUsuarios");
 
-        const cursor = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
+        var cursor = aficionesUsuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
 
         cursor.onsuccess = function (eventoCursor) {
-            const resultado = eventoCursor.target.result;
+            var resultado = eventoCursor.target.result;
 
             if (resultado) {
-                const idAficion = resultado.value.aficion;
+                var idAficion = resultado.value.aficion;
 
                 if (aficionesAEliminar.includes(idAficion)) {
                     aficionesUsuariosStore.delete(resultado.primaryKey); 
@@ -117,8 +117,8 @@ function eliminarAficionesSeleccionadas() {
 }
 
 function actualizarSessionStorage(aficionesAEliminar) {
-    const aficionesPerfil = JSON.parse(sessionStorage.getItem("aficiones")) || [];
-    const nuevasAficiones = aficionesPerfil.filter(
+    var aficionesPerfil = JSON.parse(sessionStorage.getItem("aficiones")) || [];
+    var nuevasAficiones = aficionesPerfil.filter(
             aficion => !aficionesAEliminar.includes(aficion.id)
     );
 
@@ -128,7 +128,7 @@ Swal.fire({
             title: "Eliminado correctamente",
             text: "¡Las aficiones se han eliminado correctamente de tu perfil!"
                 });  
-    const lista = document.getElementById("listaAficiones");
+    var lista = document.getElementById("listaAficiones");
     lista.innerHTML = ""; 
     cargarAficiones(); 
 }
