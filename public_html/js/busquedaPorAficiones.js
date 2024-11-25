@@ -72,8 +72,7 @@ function buscar() {
     resultadosContainer.innerHTML = "";
 
     if (aficionesSeleccionadas.length === 0) {
-        alert("No has seleccionado ninguna afición.");
-        return;
+        Swal.fire("No has seleccionado ninguna afición");
     }
 
     const solicitud = indexedDB.open("vitomaite08", 1);

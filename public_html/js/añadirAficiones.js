@@ -96,7 +96,7 @@ function añadirAficiones() {
     const checkboxes = document.querySelectorAll("#checkboxAficiones input[type='checkbox']:checked");
     const aficionesSeleccionadas = Array.from(checkboxes).map((checkbox) => ({
         id: parseInt(checkbox.value),
-        nombre: checkbox.dataset.nombre,
+        nombre: checkbox.dataset.nombre
     }));
 
     if (aficionesSeleccionadas.length === 0) {
@@ -119,7 +119,7 @@ function añadirAficiones() {
             if (!aficionesPerfilIds.includes(aficion.id)) {
                 aficionesUsuariosStore.add({
                     email: emailUsuario,
-                    aficion: aficion.id,
+                    aficion: aficion.id
                 });
 
                 aficionesPerfil.push(aficion);
@@ -132,8 +132,11 @@ function añadirAficiones() {
         });
 
         sessionStorage.setItem("aficiones", JSON.stringify(aficionesPerfil));
-        console.log("Aficiones añadidas correctamente.");
-    };
+        Swal.fire({
+            icon: "success",
+            title: "Añadido correctamente",
+            text: "¡Las aficiones se han añadido correctamente a tu perfil!"
+                });    };
 
     solicitud.onerror = function (evento) {
         console.error("No se pudo abrir la base de datos:", evento.target.error);

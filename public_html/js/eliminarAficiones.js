@@ -123,8 +123,11 @@ function actualizarSessionStorage(aficionesAEliminar) {
     );
 
     sessionStorage.setItem("aficiones", JSON.stringify(nuevasAficiones));
-    console.log("SessionStorage actualizado:", nuevasAficiones);
-
+Swal.fire({
+            icon: "success",
+            title: "Eliminado correctamente",
+            text: "¡Las aficiones se han eliminado correctamente de tu perfil!"
+                });  
     const lista = document.getElementById("listaAficiones");
     lista.innerHTML = ""; 
     cargarAficiones(); 

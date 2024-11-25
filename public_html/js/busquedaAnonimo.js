@@ -61,8 +61,11 @@ function buscar() {
                 if (!hayUsuariosEnTabla) {
                     console.error("No hay usuarios");
                 } else if (!hayUsuariosQueCumplen) {
-                    console.error("No se cumplen los criterios");
-                }
+Swal.fire({
+            icon: "error",
+            title: "Ups...",
+            text: "¡No hay usuarios que cumplan esas condiciones!"
+                });                }
             }
         };
     };
@@ -162,9 +165,7 @@ function mostrarUsuarios(usuario) {
 }
 
 function ponerLogin() {
-    console.log("funciona");
     window.location.href = 'login.html';
-
 }
 
 

@@ -9,7 +9,7 @@ var email = document.getElementById("email").value;
         var solicitud = indexedDB.open("vitomaite08", 1);
         solicitud.onsuccess = function (evento)
         {
-            console.error("klk")
+            console.error("klk");
         var db = evento.target.result;
                 var transaccion = db.transaction(["Usuarios"], "readonly");
                 var usuariosStore = transaccion.objectStore("Usuarios");
@@ -36,21 +36,23 @@ var email = document.getElementById("email").value;
                 }
                 else
                 {
-                mostrarMensaje("Error: Credenciales incorrectas");
-                }
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "¡Has escrito mal la contraseña!",
+                }); }
                 }
                 else
                 {
-                mostrarMensaje("Error: Usuario no encontrado");
-                }
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "No se ha encontrado el usuario!",
+                });                }
                 };
         };
-    };
+        };
 
-function mostrarMensaje(mensaje) {
-var mensajeDiv = document.getElementById("mensaje");
-        mensajeDiv.innerHTML = mensaje;
-}
 
 
 

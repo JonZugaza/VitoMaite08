@@ -67,7 +67,6 @@ function buscar() {
                                 );
 
                 if (cumpleCriterios) {
-                    console.log("se van a devolver personas");
                     var emailUsuario = sessionStorage.getItem('email');
                     if (emailUsuario !== usuario.email)
                     {
@@ -81,7 +80,11 @@ function buscar() {
                 if (!hayUsuariosEnTabla) {
                     console.error("No hay usuarios");
                 } else if (!hayUsuariosQueCumplen) {
-                    console.error("No se cumplen los criterios");
+                    Swal.fire({
+            icon: "error",
+            title: "Ups...",
+            text: "¡No hay usuarios que cumplan esas condiciones!"
+                });  
                 }
             }
         };
