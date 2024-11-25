@@ -70,13 +70,36 @@ function cambiarCiudad() {
              sessionStorage.setItem("ciudad", ciudadSeleccionada);
          }};
         };
-   
-    
-
-    
-    
-    
-    
-  
 }
 
+function actualizarSessionStorage(ciudadSeleccionada){
+    
+     const ciudadActual = sessionStorage.getItem("ciudad");
+
+    // Comprobar si la ciudad es diferente de la actual
+    if (ciudadActual === ciudadSeleccionada) {
+        Swal.fire({
+            icon: "info",
+            title: "Sin cambios",
+            text: "La ciudad seleccionada ya está en tu perfil.",
+        });
+        return;
+    }
+
+    // Actualizar la ciudad en sessionStorage
+    sessionStorage.setItem("ciudad", ciudadSeleccionada);
+
+    // Mostrar mensaje de éxito
+    Swal.fire({
+        icon: "success",
+        title: "Ciudad actualizada",
+        text: "Tu ciudad ha sido actualizada."
+    });
+
+    // Actualizar cualquier elemento de la interfaz que muestre la ciudad
+    const ciudadElemento = document.getElementById("ciudadActual");
+    if (ciudadElemento) {
+        ciudadElemento.textContent = ciudadSeleccionada;
+    }
+    
+}
