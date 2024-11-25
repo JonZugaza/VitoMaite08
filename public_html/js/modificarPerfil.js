@@ -52,45 +52,20 @@ function cambiarCiudad() {
         var db = evento.target.result;
         var transaccion = db.transaction(["Usuarios"], "readwrite");
         var usuariosStore = transaccion.objectStore("Usuarios");
-
-    var solicitudUsuario = usuariosStore.get(emailUsuario);
-        solicitudUsuario.onsuccess = function () {
-            var usuario = solicitudUsuario.result;
-            if (usuario) {
-                usuario.ciudad = ciudadSeleccionada;
-                usuariosStore.put(usuario); 
-                sessionStorage.setItem("ciudad", ciudadSeleccionada); 
-
-                Swal.fire({
-                    icon: "success",
-                    title: "Ciudad actualizada",
-                    text: "Tu ciudad ha sido actualizada"
-                });
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Usuario no encontrado",
-                    text: "No se encontró tu perfil en la base de datos."
-                });
-            }
-        };
-    solicitudUsuario.onerror = function () {
-            Swal.fire({
-                icon: "error",
-                title: "Error al actualizar",
-                text: "No se pudo actualizar la ciudad."
-            });
-        };
-    };
-
-    solicitud.onerror = function () {
-        Swal.fire({
-            icon: "error",
-            title: "Error con la base de datos",
-            text: "No se pudo abrir la base de datos."
-        });
-    };
-}
+        
+        var cursor = usuariosStore.index("email").openCursor(IDBKeyRange.only(emailUsuario));
+        
+        cursor.onsuccess = function (eventoCursor) {
+            
+         var resultado = eventoCursor.target.result;
+         
+         if(resultado){
+             var usuario1 = resultado.value;
+             usuario1.ciudad = ciudadSeleccionada;
+             sessionStorage.setItem("ciudad", ciudadSeleccionada);
+         }}
+        }
+   
     
         guardarCiudad.addEventListener("click", cambiarCiudad);
 
