@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/estilos.css">
         <link rel="icon" type="image/ico" href="img/favicon.ico">
-       
-        
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFxfLA57p2W0QswS3lfti0qUao1qbzN3Y"></script>
-   
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFxfLA57p2W0QswS3lfti0qUao1qbzN3Y"></script>
+
     </head>
 
     <body>
@@ -39,11 +39,20 @@
                 <a id="mensajeBienvenida"></a>
                 <img id="foto" alt="Foto del usuario" src =''>
             </div>
-            <h2>Búsqueda por geolocalización</h2>
-            <!-- Contenedor del mapa -->
-    <div class="map-container">
-        <div id="map"></div>
-    </div>
+            <h2>Búsqueda por geolocalización, escoge el rango de cercanía:</h2>
+            <select id="cercania" name="cercania">
+                <option value="0.5">0,5 kms</option>
+                <option value="1">1 km</option>
+                <option value="1.5">1,5 kms</option>
+                <option value="2">2 kms</option>
+                <option value="5">5 kms</option>
+                <option value="10">10 kms</option>
+                <option value="50">50 kms</option>
+            </select>
+            <button type="button" id="botonBuscar">Buscar</button>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
 
         </main>
         <footer id="pielogo">
@@ -56,7 +65,7 @@
         </footer>
         <script src="js/busquedaPorGeolocalizacion.js"></script>
         <script async defer 
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTIe5r4grFo-N6i3Zlf0rIgmworbCoayk&callback=initMap"> 
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTIe5r4grFo-N6i3Zlf0rIgmworbCoayk&callback=initMap">
         </script>
     </body>
 </html>
