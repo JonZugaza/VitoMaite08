@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var foto = sessionStorage.getItem('foto');
     var mensajeBienvenida = document.getElementById("mensajeBienvenida");
     var genero = sessionStorage.getItem('genero');
-    
+
     if (genero === 'H') {
         mensajeBienvenida.textContent = "Bienvenido, " + nombre;
     } else {
@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var fotoUsuarioElement = document.getElementById("foto");
     fotoUsuarioElement.src = foto;
+    initMap();
+
 });
 
 var latUsuario = sessionStorage.getItem('lat');
@@ -29,9 +31,9 @@ function calcularDistancia(lat1, lon1, lat2, lon2) {
 
 
     const a =
-        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
-        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
@@ -48,10 +50,12 @@ const puntosDentro = puntos.filter((punto) => {
 
 // Inicializar el mapa
 function initMap() {
-   // Crear el mapa centrado en la latitud y longitud de referencia
+    // Crear el mapa centrado en la latitud y longitud de referencia
     const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 8, // Cambia el nivel de zoom. Valores más bajos = más lejos
-        center: { lat: latRef, lng: lonRef }
+        center: {lat: 43.24260658476168, lng: -2.923762555397524},
+                zoom: 8 ,// Cambia el nivel de zoom. Valores más bajos = más lejos
+                 title: 'La casa de eder' 
+
     });
 
 
@@ -63,7 +67,7 @@ function initMap() {
         fillColor: "#FF0000",
         fillOpacity: 0.2,
         map,
-        center: { lat: latRef, lng: lonRef },
+        center: {lat: latRef, lng: lonRef},
         radius: radio * 1000 // Convertir kilómetros a metros
     });
 
@@ -71,7 +75,7 @@ function initMap() {
     // Añadir marcadores para los puntos dentro del radio
     puntosDentro.forEach((punto) => {
         const marker = new google.maps.Marker({
-            position: { lat: punto.lat, lng: punto.lon },
+            position: {lat: punto.lat, lng: punto.lon},
             map,
             title: punto.nombre
         });
@@ -106,8 +110,6 @@ function initMap() {
 }
 
 
-// Inicializar el mapa al cargar la página
-window.onload = initMap;
 
 
 
