@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var fotoUsuarioElement = document.getElementById("foto");
     fotoUsuarioElement.src = foto;
+    
+        var guardarCiudad = document.getElementById("guardarCiudad");
+        guardarCiudad.addEventListener("click", cambiarCiudad);
+
 });
 
 document.getElementById("botonCS").addEventListener('click', function () {
@@ -33,7 +37,6 @@ ciudades.forEach(ciudad => {
 
 function cambiarCiudad() {
     
-    var guardarCiudad = document.getElementById("guardarCiudad");
     var ciudadSeleccionada = document.getElementById("ciudadSeleccionada").value;
     
     if(!ciudadSeleccionada)
@@ -44,7 +47,7 @@ function cambiarCiudad() {
     
     var emailUsuario = sessionStorage.getItem("email");
     if(!emailUsuario){
-        alert("No se encontró al usuario. Inicia sesión primero.")
+        alert("No se encontró al usuario. Inicia sesión primero.");
         return;
     }
     
@@ -69,7 +72,6 @@ function cambiarCiudad() {
         };
    
     
-        guardarCiudad.addEventListener("click", cambiarCiudad);
 
     
     
